@@ -20,30 +20,23 @@ header {
   max-height: 100vh;
 }
 
-
 nav {
   width: 100%;
-  font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
 }
 
 nav a {
   display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  padding: .5rem 1rem;
+  text-decoration: none;
+  color: #0d6efd;
 }
 
-nav a:first-of-type {
+a.active-link {
+  color: #fff;
+  background-color: #0d6efd;
   border: 0;
+  border-radius: 0.25rem;
 }
 
 @media (min-width: 1024px) {
@@ -51,10 +44,6 @@ nav a:first-of-type {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
   }
 
   header .wrapper {
@@ -65,11 +54,8 @@ nav a:first-of-type {
 
   nav {
     text-align: left;
-    margin-left: -1rem;
     font-size: 1rem;
-
     padding: 1rem 0;
-    margin-top: 1rem;
   }
 }
 </style>
