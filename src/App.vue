@@ -18,6 +18,15 @@ import { RouterLink, RouterView } from 'vue-router'
 header {
   line-height: 1.5;
   max-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  text-align: left;
+  font-size: 1rem;
+  padding: 1rem 0;
 }
 
 nav {
@@ -37,25 +46,5 @@ a.active-link {
   background-color: #0d6efd;
   border: 0;
   border-radius: 0.25rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    font-size: 1rem;
-    padding: 1rem 0;
-  }
 }
 </style>
