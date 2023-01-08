@@ -39,6 +39,9 @@ export default {
             <div class="row" v-for="(qu, i) in q.questions" :key="i">
                 <Block :qu="qu" />
             </div>
+            <v-btn color="success">
+                Отправить
+            </v-btn>
         </form>
     </div>
 </template>
