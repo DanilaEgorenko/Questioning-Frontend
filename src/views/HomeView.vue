@@ -1,19 +1,50 @@
 <script>
+import Search from '../components/Search.vue'
+import SortSelect from '../components/SortSelect.vue'
+import Filter from '../components/Filter.vue'
 export default {
-    computed: {
-        questions() {
-            return this.$store.getters.getQuestions
+    components: {
+        Search,
+        SortSelect,
+        Filter
+    },
+    data() {
+        return {
+            questions: [],
+            searchInput: '',
+            loading: true
         }
     },
     mounted() {
         this.$store.dispatch('loadQuestions')
+            .then(() => {
+                this.questions = this.$store.getters.getQuestions()
+            })
+            .finally(() => this.loading = false)
+    },
+    methods: {
+        handleSearch(e) {
+            this.searchInput = e.target.value.trim()
+            this.questions = this.$store.getters.getQuestions(e.target.value.trim().toLowerCase())
+        },
+        handleSort(e) {
+            this.questions = this.$store.getters.getSorted(e.target.value, this.questions, this.searchInput)
+        },
+        handleFilter(e) {
+            this.questions = this.$store.getters.getFiltered(e.target.checked, this.questions, this.searchInput)
+        }
     }
 }
 </script>
 <template>
     <h1>Анкеты</h1>
+    <div class="d-flex settings">
+        <Search @input="handleSearch" v-model="searchInput" />
+        <SortSelect @change="handleSort" />
+        <Filter @change="handleFilter" />
+    </div>
     <div class="container">
-        <div class="list-group" v-for="(q, i) in questions" :key="i">
+        <div v-if="questions.length" class="list-group" v-for="(q, i) in questions" :key="i">
             <RouterLink :to="'/question/' + q.id">
                 <div class="flex-title">
                     <p>{{ q.title }}</p>
@@ -21,6 +52,7 @@ export default {
                 </div>
             </RouterLink>
         </div>
+        <div v-else>По вашему запросу ничего не найдено :(</div>
     </div>
 </template>
 <style scoped>
@@ -55,5 +87,10 @@ export default {
 
 .flex-title>*:last-child {
     opacity: 0.7;
+}
+
+.settings {
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 </style>
