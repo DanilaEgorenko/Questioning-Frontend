@@ -4,7 +4,8 @@ export const store = {
     },
     getters: {
         getQuestions: state => state.questions,
-        getQuestionById: state => id => state.questions.find(q => q.id == id)
+        getQuestionById: state => id => state.questions.find(q => q.id == id),
+        getQuestionByProfile: state => author => state.questions.filter(q => q.author == author)
     },
     mutations: {
         setQuestions(state, questions) {

@@ -1,8 +1,8 @@
 <script>
 export default {
     computed: {
-        questions() {
-            return this.$store.getters.getQuestions
+        myQuestions() {
+            return this.$store.getters.getQuestionByProfile('Dan')
         }
     },
     mounted() {
@@ -11,9 +11,9 @@ export default {
 }
 </script>
 <template>
-    <h1>Анкеты</h1>
+    <h1>Мои анкеты</h1>
     <div class="container">
-        <div class="list-group" v-for="(q, i) in questions" :key="i">
+        <div class="list-group" v-for="(q, i) in myQuestions" :key="i">
             <RouterLink :to="'/question/' + q.id">
                 <div class="flex-title">
                     <p>{{ q.title }}</p>

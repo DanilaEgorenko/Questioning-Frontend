@@ -7,6 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Главная</RouterLink>
+        <RouterLink to="/profile">Мои анкеты</RouterLink>
       </nav>
     </div>
   </header>
