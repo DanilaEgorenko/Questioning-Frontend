@@ -1,9 +1,9 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 export default {
-  data() {
-    return {
-      isLogin: this.$store.getters.isLogin
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
     }
   },
   methods: {
@@ -20,7 +20,7 @@ export default {
       <nav>
         <RouterLink to="/">Главная</RouterLink>
         <RouterLink v-if="isLogin" to="/profile">Мои анкеты</RouterLink>
-        <button v-else @click="login">Войти</button>
+        <a v-else @click="login">Войти</a>
       </nav>
     </div>
   </header>
