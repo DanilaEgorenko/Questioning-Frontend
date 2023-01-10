@@ -30,16 +30,17 @@ export default {
         <div class="flex-box-preview-info d-flex">
             <img :src="q.preview" />
             <div class="flex-info d-flex">
-                <div class="created_at">{{ 'Созд.: ' + q.created_at }}</div>
-                <div v-if="q.edited_at" class="edited_at">{{ 'Ред.: ' + q.edited_at }}</div>
-                <p>Автор: {{ q.author }}</p>
+                <p>👁️ {{ q.views }}</p>
+                <div class="created_at">👨‍💻{{ q.created_at }}</div>
+                <div v-if="q.edited_at" class="edited_at">✍️{{ q.edited_at }}</div>
+                <p>👤 {{ q.author }}</p>
             </div>
         </div>
         <div class="questions">
             <form action="#">
-                <div class="block" v-for="(qu, i) in q.questions" :key="i">
+                <section class="block" v-for="(qu, i) in q.questions" :key="i">
                     <Block :qu="qu" />
-                </div>
+                </section>
                 <button>Отправить</button>
             </form>
         </div>
@@ -75,5 +76,27 @@ img {
 
 .flex-title {
     align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .flex-title {
+        flex-wrap: wrap;
+    }
+
+    .flex-title>* {
+        margin: 10px;
+    }
+
+    .flex-box-preview-info {
+        flex-direction: column;
+    }
+
+    .flex-box-preview-info>* {
+        margin: 10px 0;
+    }
+
+    img {
+        width: 100%;
+    }
 }
 </style>

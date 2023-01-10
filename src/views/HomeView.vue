@@ -104,4 +104,10 @@ export default {
     flex-wrap: wrap;
     margin: 20px 5%;
 }
+
+@media (max-width: 1024px) {
+    .settings>* {
+        margin: 10px;
+    }
+}
 </style>
