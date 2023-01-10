@@ -22,40 +22,40 @@ export default {
 </script>
 
 <template>
-    <div class="d-flex ma-3 ml-0">
-        <button class="back" @click="back">Назад</button>
-        <h1 class="mx-3">{{ q.title }}</h1>
-    </div>
-    <div class="flex-box-preview-info d-flex">
-        <img :src="q.preview" />
-        <div class="flex-info d-flex">
-            <div class="created_at">{{ 'Созд.: ' + q.created_at }}</div>
-            <div v-if="q.edited_at" class="edited_at">{{ 'Ред.: ' + q.edited_at }}</div>
-            <p>Автор: {{ q.author }}</p>
+    <div class="flex-box">
+        <div class="d-flex flex-title">
+            <button class="back" @click="back">Назад</button>
+            <h1 class="title">{{ q.title }}</h1>
         </div>
-    </div>
-    <div class="questions">
-        <form action="#">
-            <div class="row" v-for="(qu, i) in q.questions" :key="i">
-                <Block :qu="qu" />
+        <div class="flex-box-preview-info d-flex">
+            <img :src="q.preview" />
+            <div class="flex-info d-flex">
+                <div class="created_at">{{ 'Созд.: ' + q.created_at }}</div>
+                <div v-if="q.edited_at" class="edited_at">{{ 'Ред.: ' + q.edited_at }}</div>
+                <p>Автор: {{ q.author }}</p>
             </div>
-            <v-btn color="success">
-                Отправить
-            </v-btn>
-        </form>
+        </div>
+        <div class="questions">
+            <form action="#">
+                <div class="block" v-for="(qu, i) in q.questions" :key="i">
+                    <Block :qu="qu" />
+                </div>
+                <button>Отправить</button>
+            </form>
+        </div>
     </div>
 </template>
 <style scoped>
-button {
-    background-color: #0d6efd;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    height: 45px;
-}
-
 img {
     width: 80%;
+}
+
+.title {
+    margin-left: 10px;
+}
+
+.block {
+    margin: 15px 0;
 }
 
 .flex-info {
@@ -65,14 +65,15 @@ img {
 }
 
 .flex-box-preview-info {
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-.v-selection-control .v-label {
-    margin: 5px;
+.flex-box {
+    margin: 0 auto;
+    width: 80%;
 }
 
-.v-selection-control__input input {
-    opacity: 1 !important;
+.flex-title {
+    align-items: center;
 }
 </style>

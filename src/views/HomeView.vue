@@ -32,6 +32,14 @@ export default {
         },
         handleFilter(e) {
             this.questions = this.$store.getters.getFiltered(e.target.checked, this.questions, this.searchInput)
+        },
+        handleUpdate() {
+            this.$store.dispatch('loadQuestions')
+                .then(() => {
+                    this.questions = this.$store.getters.getQuestions()
+                    alert('Обновилось')
+                })
+                .finally(() => this.loading = false)
         }
     }
 }
@@ -42,6 +50,7 @@ export default {
         <Search @input="handleSearch" v-model="searchInput" />
         <SortSelect @change="handleSort" />
         <Filter @change="handleFilter" />
+        <button @click="handleUpdate">Обновить</button>
     </div>
     <div class="container">
         <div v-if="questions.length" class="list-group" v-for="(q, i) in questions" :key="i">
@@ -90,7 +99,9 @@ export default {
 }
 
 .settings {
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
+    margin: 20px 5%;
 }
 </style>
