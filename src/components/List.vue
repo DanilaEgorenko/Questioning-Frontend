@@ -1,29 +1,36 @@
 <script>
 export default {
-    computed: {
-        myQuestions() {
-            return this.$store.getters.getQuestionByProfile('Dan')
+    data() {
+        return {
+            questions: [],
+            loading: true
         }
     },
     mounted() {
-        this.$store.dispatch('loadQuestions')
-        if (!this.$store.getters.isLogin) this.$router.push('/')
+        this.load()
     },
     methods: {
-        logout() {
-            this.$store.dispatch('login')
-            this.$router.push('/')
+        load() {
+            this.$store.dispatch('loadQuestions')
+                .then(() => {
+                    this.questions = this.$store.getters.getQuestions()
+                    this.$emit('load', this.questions)
+                })
+                .finally(() => this.loading = false)
+        },
+        update() {
+            this.load()
+            alert('Обновилось')
+        },
+        setData(data) {
+            this.questions = data
         }
     }
 }
 </script>
 <template>
-    <div class="d-flex flex-title-page">
-        <h1>Мои анкеты</h1>
-        <button @click="logout">Выйти</button>
-    </div>
     <div class="container">
-        <div class="list-group" v-for="(q, i) in myQuestions" :key="i">
+        <div v-if="questions.length" class="list-group" v-for="(q, i) in questions" :key="i">
             <RouterLink :to="'/question/' + q.id">
                 <div class="flex-title">
                     <p>{{ q.title }}</p>
@@ -31,16 +38,12 @@ export default {
                 </div>
             </RouterLink>
         </div>
+        <div v-else>По вашему запросу ничего не найдено :(</div>
     </div>
 </template>
 <style scoped>
 .container {
     margin: 20px 5%;
-}
-
-.flex-title-page {
-    align-items: center;
-    justify-content: space-between;
 }
 
 .list-group {

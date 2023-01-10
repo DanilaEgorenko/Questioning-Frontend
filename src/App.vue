@@ -1,12 +1,26 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from 'vue-router'
+export default {
+  data() {
+    return {
+      isLogin: this.$store.getters.isLogin
+    }
+  },
+  methods: {
+    login() {
+      this.$store.dispatch('login')
+      this.isLogin = !this.isLogin
+    }
+  }
+}
 </script>
 <template>
   <header>
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Главная</RouterLink>
-        <RouterLink to="/profile">Мои анкеты</RouterLink>
+        <RouterLink v-if="isLogin" to="/profile">Мои анкеты</RouterLink>
+        <button v-else @click="login">Войти</button>
       </nav>
     </div>
   </header>

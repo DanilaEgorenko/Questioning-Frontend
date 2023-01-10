@@ -1,8 +1,10 @@
 <script>
 import Block from '../components/Block.vue'
+import Review from '../components/Review.vue'
 export default {
     components: {
-        Block
+        Block,
+        Review
     },
     mounted() {
         this.$store.dispatch('loadQuestions')
@@ -44,6 +46,7 @@ export default {
                 <button>Отправить</button>
             </form>
         </div>
+        <Review :id="this.$route.params.id" />
     </div>
 </template>
 <style scoped>
