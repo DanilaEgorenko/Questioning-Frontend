@@ -59,4 +59,12 @@ export default {
         margin: 10px;
     }
 }
+
+@media print {
+
+    h1,
+    .settings {
+        display: none;
+    }
+}
 </style>

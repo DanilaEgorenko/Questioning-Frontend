@@ -62,4 +62,10 @@ a.active-link {
   border: 0;
   border-radius: 0.25rem;
 }
+
+@media print {
+  nav {
+    display: none;
+  }
+}
 </style>
