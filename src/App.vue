@@ -22,6 +22,7 @@ export default {
           <RouterLink to="/">Главная</RouterLink>
           <RouterLink v-if="isLogin" to="/profile">Мои анкеты</RouterLink>
           <a v-else @click="login">Войти</a>
+          <a href="https://github.com/DanilaEgorenko/questioning-frontend" target="_blank">GitHub</a>
         </nav>
       </div>
     </header>

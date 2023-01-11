@@ -38,6 +38,7 @@ export default {
 </script>
 <template>
     <h1>Анкеты</h1>
+    <p>Перейдите на любую понравившуюся вам анкету, пройдите тестирование и оставьте свой отзыв!</p>
     <div class="d-flex settings">
         <Search @input="handleSearch" v-model="searchInput" />
         <SortSelect @change="handleSort" />
