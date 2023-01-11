@@ -26,7 +26,10 @@ export default {
 <template>
     <div class="flex-box">
         <div class="d-flex flex-title">
-            <button class="back" @click="back">Назад</button>
+            <!-- <button class="back" @click="back">Назад</button> -->
+            <v-btn class="back" :rounded="5" color="primary" @click="back">
+                Назад
+            </v-btn>
             <h1 class="title">{{ q.title }}</h1>
         </div>
         <div class="flex-box-preview-info d-flex">
@@ -43,7 +46,9 @@ export default {
                 <section class="block" v-for="(qu, i) in q.questions" :key="i">
                     <Block :qu="qu" />
                 </section>
-                <button>Отправить</button>
+                <v-btn :rounded="5" color="primary">
+                    Отправить
+                </v-btn>
             </form>
         </div>
         <Review :id="this.$route.params.id" />

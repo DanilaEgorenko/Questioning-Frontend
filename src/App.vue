@@ -15,19 +15,21 @@ export default {
 }
 </script>
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Главная</RouterLink>
-        <RouterLink v-if="isLogin" to="/profile">Мои анкеты</RouterLink>
-        <a v-else @click="login">Войти</a>
-      </nav>
-    </div>
-  </header>
+  <v-app>
+    <header>
+      <div class="wrapper">
+        <nav>
+          <RouterLink to="/">Главная</RouterLink>
+          <RouterLink v-if="isLogin" to="/profile">Мои анкеты</RouterLink>
+          <a v-else @click="login">Войти</a>
+        </nav>
+      </div>
+    </header>
 
-  <main>
-    <RouterView />
-  </main>
+    <main>
+      <RouterView />
+    </main>
+  </v-app>
 </template>
 <style scoped>
 header {

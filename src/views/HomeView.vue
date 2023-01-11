@@ -42,7 +42,10 @@ export default {
         <Search @input="handleSearch" v-model="searchInput" />
         <SortSelect @change="handleSort" />
         <Filter @change="handleFilter" />
-        <button @click="updateQuestions">Обновить</button>
+        <!-- <button @click="updateQuestions">Обновить</button> -->
+        <v-btn :rounded="5" color="primary" @click="updateQuestions">
+            Обновить
+        </v-btn>
     </div>
     <List @load="onLoad" ref="list" />
 </template>
@@ -51,7 +54,13 @@ export default {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 20px 5%;
+    margin: 20px calc(5% - 20px);
+}
+
+@media (min-width: 1024px) {
+    .settings>* {
+        margin: 0 20px;
+    }
 }
 
 @media (max-width: 1024px) {

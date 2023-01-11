@@ -5,11 +5,14 @@ export default {
 </script>
 <template>
     <h3>{{ qu.title }}</h3>
-    <fieldset :id="qu.title">
-        <div class="answer" v-for="(a, i) in qu.vars" :key="i">
+    <!-- <fieldset :id="qu.title"> -->
+    <!-- <div class="answer" v-for="(a, i) in qu.vars" :key="i">
             <label><input type="radio" :name="qu.title" :value="qu.title + ' ' + a" />{{ a }}</label>
-        </div>
-    </fieldset>
+        </div> -->
+    <v-radio-group v-for="(a, i) in qu.vars" :key="i" v-model="radio">
+        <v-radio :label="a" :value="qu.title + ' ' + a"></v-radio>
+    </v-radio-group>
+    <!-- </fieldset> -->
 </template>
 <style scoped>
 fieldset {

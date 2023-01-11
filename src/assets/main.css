@@ -22,6 +22,36 @@ button {
   border: 0;
 }
 
+select {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+}
+
 .d-flex {
   display: flex;
+}
+
+.v-selection-control__input input {
+  opacity: 1;
+}
+
+.v-selection-control--density-default {
+  --v-selection-control-size: 20px;
+}
+
+.v-input__details {
+  display: none;
+}
+
+.v-input--density-default {
+  margin: 10px 0;
+}
+
+.v-selection-control__wrapper {
+  margin-right: 5px;
+}
+
+.v-btn.v-btn--density-default {
+  background-color: #0d6efd !important;
 }

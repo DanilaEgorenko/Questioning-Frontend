@@ -20,7 +20,10 @@ export default {
 <template>
     <div class="d-flex flex-title-page">
         <h1>Мои анкеты</h1>
-        <button @click="logout">Выйти</button>
+        <!-- <button @click="logout">Выйти</button> -->
+        <v-btn :rounded="5" color="primary" @click="logout">
+            Выйти
+        </v-btn>
     </div>
     <div class="container">
         <div class="list-group" v-for="(q, i) in myQuestions" :key="i">
