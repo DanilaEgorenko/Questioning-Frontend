@@ -60,7 +60,7 @@ img {
 }
 
 .title {
-    margin-left: 10px;
+    margin: 20px;
 }
 
 .block {

@@ -37,8 +37,10 @@ export default {
 }
 </script>
 <template>
-    <h1>Анкеты</h1>
-    <p>Перейдите на любую понравившуюся вам анкету, пройдите тестирование и оставьте свой отзыв!</p>
+    <div class="title-margin">
+        <h1>Анкеты</h1>
+        <p>Перейдите на любую понравившуюся вам анкету, пройдите тестирование и оставьте свой отзыв!</p>
+    </div>
     <div class="d-flex settings">
         <Search @input="handleSearch" v-model="searchInput" />
         <SortSelect @change="handleSort" />
@@ -56,6 +58,10 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 20px calc(5% - 20px);
+}
+
+.title-margin {
+    margin: 0 5%;
 }
 
 @media (min-width: 1024px) {

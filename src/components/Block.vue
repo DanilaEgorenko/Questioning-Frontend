@@ -9,7 +9,7 @@ export default {
     <!-- <div class="answer" v-for="(a, i) in qu.vars" :key="i">
             <label><input type="radio" :name="qu.title" :value="qu.title + ' ' + a" />{{ a }}</label>
         </div> -->
-    <v-radio-group v-for="(a, i) in qu.vars" :key="i" v-model="radio">
+    <v-radio-group v-for="(a, i) in qu.vars" :key="i">
         <v-radio :label="a" :value="qu.title + ' ' + a"></v-radio>
     </v-radio-group>
     <!-- </fieldset> -->

@@ -33,6 +33,7 @@ export default {
         <div v-if="questions.length" class="list-group" v-for="(q, i) in questions" :key="i">
             <RouterLink :to="'/question/' + q.id">
                 <div class="flex-title">
+                    <img :src="q.preview" alt="preview">
                     <p>{{ q.title }}</p>
                     <p>{{ q.author }}</p>
                 </div>
@@ -44,6 +45,10 @@ export default {
 <style scoped>
 .container {
     margin: 20px 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 20px;
+    text-align: center;
 }
 
 .list-group {
@@ -67,8 +72,18 @@ export default {
 
 .flex-title {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 10px;
+    height: 500px;
+    justify-content: space-around;
+}
+
+.flex-title>img {
+    width: 280px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0.25rem;
 }
 
 .flex-title>*:last-child {
